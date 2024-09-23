@@ -89,7 +89,7 @@ const App = () => {
   };
 
   return (
-    <div style={{ width: "80vw", margin: "auto" }}>
+    <div style={{ width: "80vw", margin: "auto" }} id="main">
       <h1>Our Menu</h1>
       <div>
         <button onClick={() => filterHandler("all")}>All</button>
