@@ -1,12 +1,12 @@
 import React from "react";
 
-const Card = ({ item, index }) => {
+const Card = ({ item }) => {
   const cardStyle = {
     border: "1px solid #ccc",
     borderRadius: "8px",
     padding: "16px",
     margin: "16px",
-    width: "200px",
+    width: "100%",
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
     textAlign: "center",
   };
@@ -33,16 +33,15 @@ const Card = ({ item, index }) => {
     color: "#555",
     fontSize: "14px",
   };
-
   return (
-    <div key={index} style={cardStyle}>
+    <div key={item.id} style={cardStyle}>
       <img src={item.img} alt={item.title} style={imgStyle} />
       <div className="text">
         <div>
           <span style={titleStyle}>{item.title}</span>
           <span style={priceStyle}>$ {item.price}</span>
         </div>
-        <div style={descStyle}>{item.desc}</div>
+        <p style={descStyle}>{item.desc}</p>
       </div>
     </div>
   );

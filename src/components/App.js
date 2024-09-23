@@ -4,6 +4,7 @@ import Breakfast from "./Breakfast";
 import Lunch from "./Lunch";
 import Shakes from "./Shakes";
 import All from "./All";
+import Card from "./Card";
 
 const data = [
   {
@@ -81,89 +82,39 @@ const data = [
 ];
 const App = () => {
   const [list, setList] = useState(data);
-  const [breakfastList, setBreakfastList] = useState("");
-  const [lunchList, setLunchList] = useState("");
-  const [shakesList, setShakesList] = useState("");
+  const [filterList, setFilterList] = useState(data);
 
-  const breakfast = () => {
-    const items = list.filter((item) => item.category == "breakfast");
-    setBreakfastList(items);
+  const filterHandler = (category) => {
+    if (category == "all") {
+      setFilterList(list);
+      return;
+    }
+    const newList = list.filter((item) => item.category == category);
+    setFilterList(newList);
   };
-  const lunch = () => {
-    const items = list.filter((item) => item.category == "lunch");
-    setLunchList(items);
-  };
-  const shakes = () => {
-    const items = list.filter((item) => item.category == "shakes");
-    setShakesList(items);
-  };
-
-  useEffect(() => {
-    breakfast();
-    lunch();
-    shakes();
-  }, []);
 
   return (
-    <BrowserRouter>
-      <h1 style={{ textAlign: "center" }}>Our Menu</h1>
-      <nav style={{ display: "flex", justifyContent: "center" }}>
+    <div style={{ width: "80vw", margin: "auto" }}>
+      <h1>Our Menu</h1>
+      <div>
+        <button onClick={() => filterHandler("all")}>All</button>
+        <button onClick={() => filterHandler("breakfast")}>Breakfast</button>
+        <button onClick={() => filterHandler("lunch")}>Lunch</button>
+        <button onClick={() => filterHandler("shakes")}>Shakes</button>
+
         <div
           style={{
-            width: "500px",
-            display: "flex",
-            justifyContent: "space-between",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            columnGap: "71px",
           }}
         >
-          <Link
-            style={{
-              textDecoration: "none",
-              color: "gold",
-              fontSize: "1.5rem",
-            }}
-            to="/all"
-          >
-            All
-          </Link>
-          <Link
-            style={{
-              textDecoration: "none",
-              color: "gold",
-              fontSize: "1.5rem",
-            }}
-            to="/breakfast"
-          >
-            Breakfast
-          </Link>
-          <Link
-            style={{
-              textDecoration: "none",
-              color: "gold",
-              fontSize: "1.5rem",
-            }}
-            to="/lunch"
-          >
-            Lunch
-          </Link>
-          <Link
-            style={{
-              textDecoration: "none",
-              color: "gold",
-              fontSize: "1.5rem",
-            }}
-            to="/shakes"
-          >
-            Shakes
-          </Link>
+          {filterList.map((item) => {
+            return <Card item={item} />;
+          })}
         </div>
-      </nav>
-      <Routes>
-        <Route path="/all" element={<All list={list} />} />
-        <Route path="/breakfast" element={<Breakfast list={breakfastList} />} />
-        <Route path="/lunch" element={<Lunch list={lunchList} />} />
-        <Route path="/shakes" element={<Shakes list={shakesList} />} />
-      </Routes>
-    </BrowserRouter>
+      </div>
+    </div>
   );
 };
 

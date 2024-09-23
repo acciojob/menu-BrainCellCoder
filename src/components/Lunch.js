@@ -10,7 +10,7 @@ const Lunch = ({ list }) => {
         justifyContent: "space-evenly",
       }}
     >
-      {list.map((item, index) => {
+      {list?.map((item, index) => {
         return <Card item={item} index={index} />;
       })}
     </div>
