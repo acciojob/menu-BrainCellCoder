@@ -34,7 +34,11 @@ const Card = ({ item }) => {
     fontSize: "14px",
   };
   return (
-    <div key={item.id} style={cardStyle}>
+    <div
+      key={item.id}
+      style={cardStyle}
+      data-test-id={`menu-item-${item.category}`}
+    >
       <img src={item.img} alt={item.title} style={imgStyle} />
       <div className="text">
         <div>
