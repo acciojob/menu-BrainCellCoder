@@ -1,9 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
-import Breakfast from "./Breakfast";
-import Lunch from "./Lunch";
-import Shakes from "./Shakes";
-import All from "./All";
+import React, { useState } from "react";
 import Card from "./Card";
 
 const data = [
@@ -98,9 +93,15 @@ const App = () => {
       <h1>Our Menu</h1>
       <div>
         <button onClick={() => filterHandler("all")}>All</button>
-        <button onClick={() => filterHandler("breakfast")}>Breakfast</button>
-        <button onClick={() => filterHandler("lunch")}>Lunch</button>
-        <button onClick={() => filterHandler("shakes")}>Shakes</button>
+        <button onClick={() => filterHandler("breakfast")} id="filter-btn-3">
+          Breakfast
+        </button>
+        <button onClick={() => filterHandler("lunch")} id="filter-btn-2">
+          Lunch
+        </button>
+        <button onClick={() => filterHandler("shakes")} id="filter-btn-1">
+          Shakes
+        </button>
 
         <div
           style={{

@@ -9,6 +9,7 @@ const All = ({ list }) => {
         flexWrap: "wrap",
         justifyContent: "space-evenly",
       }}
+      id="main"
     >
       {list.map((item, index) => {
         return <Card item={item} index={index} />;
