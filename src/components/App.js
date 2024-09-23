@@ -93,13 +93,13 @@ const App = () => {
       <h1>Our Menu</h1>
       <div>
         <button onClick={() => filterHandler("all")}>All</button>
-        <button onClick={() => filterHandler("breakfast")} id="filter-btn-3">
+        <button onClick={() => filterHandler("breakfast")} id="filter-btn-1">
           Breakfast
         </button>
         <button onClick={() => filterHandler("lunch")} id="filter-btn-2">
           Lunch
         </button>
-        <button onClick={() => filterHandler("shakes")} id="filter-btn-1">
+        <button onClick={() => filterHandler("shakes")} id="filter-btn-3">
           Shakes
         </button>
 
